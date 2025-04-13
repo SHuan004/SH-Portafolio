@@ -262,7 +262,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.05 }}
               >
                 <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
-                  +5 años de experiencia
+                  +3 años de experiencia
                 </span>
               </motion.div>
             </div>

@@ -4,7 +4,7 @@ export const education = [
   {
     degree: "Ingeniería en Computación e Informática",
     institution: "Universidad Católica del Norte",
-    period: "2015 - 2019",
+    period: "2020 - 2023",
     description:
       "Formación integral en ciencias de la computación, algoritmos, estructuras de datos, arquitectura de sistemas y desarrollo de software. Especialización en desarrollo de aplicaciones y sistemas distribuidos.",
     icon: GraduationCap,
