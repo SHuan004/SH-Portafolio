@@ -99,7 +99,7 @@ export default function Interests() {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <Image
-                src="/balanced-life-juggling.png"
+                src="/images/balanced-life-juggling.png"
                 alt="Balance en la vida"
                 fill
                 className="object-cover"

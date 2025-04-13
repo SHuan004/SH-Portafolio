@@ -143,7 +143,6 @@ export default function Projects() {
                 image={project.image}
                 technologies={project.technologies}
                 githubUrl={project.githubUrl}
-                demoUrl={project.demoUrl}
               />
             ))}
 

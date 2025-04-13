@@ -21,19 +21,13 @@ export default function ContactForm() {
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
-    if (!formData.name.trim()) {
-      newErrors.name = "El nombre es requerido";
-    }
-
+    if (!formData.name.trim()) newErrors.name = "El nombre es requerido";
     if (!formData.email.trim()) {
       newErrors.email = "El email es requerido";
     } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
       newErrors.email = "Email inválido";
     }
-
-    if (!formData.message.trim()) {
-      newErrors.message = "El mensaje es requerido";
-    }
+    if (!formData.message.trim()) newErrors.message = "El mensaje es requerido";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -48,7 +42,6 @@ export default function ContactForm() {
       [id]: value,
     }));
 
-    // Clear error when user types
     if (errors[id]) {
       setErrors((prev) => {
         const newErrors = { ...prev };
@@ -61,23 +54,25 @@ export default function ContactForm() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     setIsSubmitting(true);
-
-    // Simulación de envío de formulario
     try {
-      // Aquí iría la lógica real de envío
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) throw new Error("Error en el servidor");
+
       setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
+      console.error(error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
-      // Reset status after 5 seconds
       setTimeout(() => setSubmitStatus(null), 5000);
     }
   };
@@ -103,12 +98,7 @@ export default function ContactForm() {
                 ¡Gracias por contactarme! Te responderé lo antes posible.
               </p>
               <button
-                onClick={() => {
-                  window.scrollTo({
-                    top: 0,
-                    behavior: "smooth",
-                  });
-                }}
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="text-sm text-green-700 dark:text-green-300 hover:text-green-900 dark:hover:text-green-100 flex items-center mt-3 font-medium"
               >
                 Volver arriba <ArrowUp className="w-3 h-3 ml-1" />
@@ -150,7 +140,7 @@ export default function ContactForm() {
               id="name"
               value={formData.name}
               onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-xl border ${
+              className={`w-full px-4 py-3 rounded-xl border text-gray-900 dark:text-white ${
                 errors.name
                   ? "border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-900/10"
                   : "border-gray-300 dark:border-gray-600 focus:border-gray-500 dark:focus:border-gray-400 dark:bg-gray-800/50"
@@ -176,7 +166,7 @@ export default function ContactForm() {
               id="email"
               value={formData.email}
               onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-xl border ${
+              className={`w-full px-4 py-3 rounded-xl border text-gray-900 dark:text-white ${
                 errors.email
                   ? "border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-900/10"
                   : "border-gray-300 dark:border-gray-600 focus:border-gray-500 dark:focus:border-gray-400 dark:bg-gray-800/50"
@@ -203,7 +193,7 @@ export default function ContactForm() {
             id="subject"
             value={formData.subject}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 focus:border-gray-500 dark:focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700 transition-colors dark:bg-gray-800/50"
+            className="w-full px-4 py-3 rounded-xl border text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 focus:border-gray-500 dark:focus:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700 transition-colors dark:bg-gray-800/50"
             placeholder="Asunto de tu mensaje"
           />
         </div>
@@ -220,7 +210,7 @@ export default function ContactForm() {
             rows={5}
             value={formData.message}
             onChange={handleChange}
-            className={`w-full px-4 py-3 rounded-xl border ${
+            className={`w-full px-4 py-3 rounded-xl border text-gray-900 dark:text-white ${
               errors.message
                 ? "border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-900/10"
                 : "border-gray-300 dark:border-gray-600 focus:border-gray-500 dark:focus:border-gray-400 dark:bg-gray-800/50"
