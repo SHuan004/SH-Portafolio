@@ -156,7 +156,7 @@ export default function Hero() {
                   boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.05)",
                 }}
                 whileTap={{ scale: 0.95 }}
-                href="/cv-sebastian-huanca.pdf"
+                href="/CV-SebastianHuanca.pdf"
                 className="border-2 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 px-8 py-4 rounded-xl flex items-center justify-center transition-all duration-300 text-gray-800 dark:text-gray-200 font-medium"
                 download
               >

@@ -1,7 +1,7 @@
 export const experiences = [
   {
     period: "Agosto 2024 - Presente",
-    title: "Full Stack Developer (Especialista Backend)",
+    title: "Backend Developer",
     company: "Hospital Dr. Carlos Cisternas de Calama",
     location: "Calama, Región de Antofagasta, Chile",
     description: [
@@ -26,7 +26,7 @@ export const experiences = [
   },
   {
     period: "Julio 2023 - Agosto 2024",
-    title: "Full-stack Developer (Enfoque en Backend)",
+    title: "Full-stack Developer",
     company: "Método Consultores",
     location: "Antofagasta, Región de Antofagasta, Chile (Remoto)",
     description: [
