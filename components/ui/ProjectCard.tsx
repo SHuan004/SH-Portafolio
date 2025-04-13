@@ -11,7 +11,6 @@ interface ProjectCardProps {
   image: string;
   technologies: string[];
   githubUrl: string;
-  demoUrl: string;
 }
 
 export default function ProjectCard({
@@ -20,7 +19,6 @@ export default function ProjectCard({
   image,
   technologies,
   githubUrl,
-  demoUrl,
 }: ProjectCardProps) {
   // Añadimos un estado para controlar si estamos en el cliente
   const [isMounted, setIsMounted] = useState(false);
@@ -76,18 +74,6 @@ export default function ProjectCard({
                   Código
                 </a>
               )}
-              {demoUrl && (
-                <a
-                  href={demoUrl}
-                  className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white flex items-center text-sm font-medium"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Ver demo de ${title}`}
-                >
-                  <ExternalLink className="w-4 h-4 mr-1.5" />
-                  Demo
-                </a>
-              )}
             </div>
           </div>
         </div>
@@ -131,19 +117,6 @@ export default function ProjectCard({
               <Github className="w-5 h-5" />
             </motion.a>
           )}
-          {demoUrl && (
-            <motion.a
-              href={demoUrl}
-              className="w-10 h-10 rounded-full bg-white/90 flex items-center justify-center text-gray-800 hover:bg-white transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Ver demo de ${title}`}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <ExternalLink className="w-5 h-5" />
-            </motion.a>
-          )}
         </div>
       </div>
 
@@ -178,18 +151,6 @@ export default function ProjectCard({
               >
                 <Github className="w-4 h-4 mr-1.5" />
                 Código
-              </a>
-            )}
-            {demoUrl && (
-              <a
-                href={demoUrl}
-                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white flex items-center text-sm font-medium transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Ver demo de ${title}`}
-              >
-                <ExternalLink className="w-4 h-4 mr-1.5" />
-                Demo
               </a>
             )}
           </div>
